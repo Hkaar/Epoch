@@ -1,5 +1,9 @@
 # Epoch
 
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+![Workflow Status](https://github.com/Hkaar/Epoch/workflows/CI/badge.svg)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+
 A simple social media web app using laravel
 
 ## Requirements
@@ -83,7 +87,7 @@ php artisan serve
 
 You can help the project by contributing to it or by just using the app :)
 
-See on how to contribute by going to the contribution guide of the project
+See on how to contribute by going to the [contribution guide](https://github.com/Hkaar/7Books/blob/master/CONTRIBUTING.md) of the project
 
 And that's all, btw here's a table for your reward
 
