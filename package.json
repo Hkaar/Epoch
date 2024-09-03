@@ -10,7 +10,9 @@
         "axios": "^1.6.4",
         "eslint": "^9.9.1",
         "globals": "^15.9.0",
+        "jsdoc": "^4.0.3",
         "laravel-vite-plugin": "^1.0.0",
+        "typescript": "^5.5.4",
         "vite": "^5.0.0"
     }
 }
