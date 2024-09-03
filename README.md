@@ -87,7 +87,7 @@ php artisan serve
 
 You can help the project by contributing to it or by just using the app :)
 
-See on how to contribute by going to the contribution guide of the project
+See on how to contribute by going to the [contribution guide](https://github.com/Hkaar/7Books/blob/master/CONTRIBUTING.md) of the project
 
 And that's all, btw here's a table for your reward
 
