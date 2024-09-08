@@ -98,7 +98,7 @@ jobs:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_DATABASE: sevenbooks
+          MYSQL_DATABASE: epoch
           MYSQL_ROOT_USERNAME: root
           MYSQL_ROOT_PASSWORD: root
         ports:
