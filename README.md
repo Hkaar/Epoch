@@ -24,13 +24,13 @@ If you really want to run this web app locally follow the steps below 'kay?
 Clone the repo
 
 ```bash
-git clone https://github.com/Hkaar/7Books.git
+git clone https://github.com/Hkaar/Epoch.git
 ```
 
 Go to the repo folder
 
 ```bash
-cd 7Books
+cd Epoch
 ```
 
 Install the required dependecies
