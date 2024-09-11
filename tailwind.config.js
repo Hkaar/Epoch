@@ -5,7 +5,17 @@ export default {
     "./resources/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      container: {
+        padding: "1rem",
+        center: true,
+      },
+      colors: {
+        primary: "#071952",
+        secondary: "#153494",
+        tertiary: "#2451DB",
+      }
+    },
   },
   plugins: [],
 }

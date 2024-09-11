@@ -53,6 +53,12 @@ mv .env.example .env && cp .env .env.example
 Rename-Item .\.env.example .\.env ; Copy-Item .\.env .\.env.example
 ```
 
+Install npm dependecies
+
+```bash
+npm install
+```
+
 Build the assets
 
 ```bash
