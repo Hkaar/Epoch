@@ -44,6 +44,6 @@ class Role extends Model
      */
     public function scopeStrictByName(Builder $query, string $name)
     {
-        return $query->where('name', '=', $query);
+        return $query->where('name', '=', $name);
     }
 }
