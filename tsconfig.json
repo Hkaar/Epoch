@@ -11,6 +11,11 @@
         "types": ["vite/client"]
     },
 
+    "include": [
+        "./resources/types/**/*",
+        "./resources/js/**/*"
+    ],
+
     "exclude": [
         "./dist/*",
         "./public/build/**/*"
