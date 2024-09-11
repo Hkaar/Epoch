@@ -9,6 +9,8 @@ class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * 
+     * @return void
      */
     public function index()
     {
@@ -17,6 +19,8 @@ class UserController extends Controller
 
     /**
      * Show the form for creating a new resource.
+     * 
+     * @return void
      */
     public function create()
     {
@@ -25,6 +29,8 @@ class UserController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * 
+     * @return void
      */
     public function store(Request $request)
     {
@@ -33,32 +39,40 @@ class UserController extends Controller
 
     /**
      * Display the specified resource.
+     * 
+     * @return void
      */
-    public function show(string $id)
+    public function show(int $id)
     {
         //
     }
 
     /**
      * Show the form for editing the specified resource.
+     * 
+     * @return void
      */
-    public function edit(string $id)
+    public function edit(int $id)
     {
         //
     }
 
     /**
      * Update the specified resource in storage.
+     * 
+     * @return void
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, int $id)
     {
         //
     }
 
     /**
      * Remove the specified resource from storage.
+     * 
+     * @return void
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
         //
     }

@@ -105,8 +105,10 @@ class User extends Authenticatable
 
     /**
      * Checks if the user has a certain role
+     * 
+     * @param array<string>|string $roles
      */
-    public function checkRole(array|string $roles): bool
+    public function checkRole($roles): bool
     {
         if (is_string($roles)) {
             return $this->role->name === $roles;

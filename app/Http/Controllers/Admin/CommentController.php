@@ -10,6 +10,8 @@ class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * 
+     * @return void
      */
     public function index()
     {
@@ -18,6 +20,8 @@ class CommentController extends Controller
 
     /**
      * Show the form for creating a new resource.
+     * 
+     * @return void
      */
     public function create()
     {
@@ -26,6 +30,8 @@ class CommentController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * 
+     * @return void
      */
     public function store(Request $request)
     {
@@ -34,32 +40,40 @@ class CommentController extends Controller
 
     /**
      * Display the specified resource.
+     * 
+     * @return void
      */
-    public function show(Comment $comment)
+    public function show(int $id)
     {
         //
     }
 
     /**
      * Show the form for editing the specified resource.
+     * 
+     * @return void
      */
-    public function edit(Comment $comment)
+    public function edit(int $id)
     {
         //
     }
 
     /**
      * Update the specified resource in storage.
+     * 
+     * @return void
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, int $id)
     {
         //
     }
 
     /**
      * Remove the specified resource from storage.
+     * 
+     * @return void
      */
-    public function destroy(Comment $comment)
+    public function destroy(int $id)
     {
         //
     }

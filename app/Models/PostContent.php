@@ -30,7 +30,7 @@ class PostContent extends Model
     /**
      * Define the relationship with the content types table
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<ContentType>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<ContentType, PostContent>
      */
     public function type()
     {
@@ -40,7 +40,7 @@ class PostContent extends Model
     /**
      * Define the relationship with the posts table
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Post>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Post, PostContent>
      */
     public function post()
     {

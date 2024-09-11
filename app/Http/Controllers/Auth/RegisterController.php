@@ -29,7 +29,7 @@ class RegisterController extends Controller
         $user = new User;
         $user->fill($request->validated());
 
-        $role = Role::StrictByRequest('member')->first();
+        $role = Role::StrictByName('member')->first();
         $user->role_id = $role->id;
 
         $user->save();

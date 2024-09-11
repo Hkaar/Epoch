@@ -30,7 +30,7 @@ class PostReaction extends Model
     /**
      * Define the relationship with the users table
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<User>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<User, PostReaction>
      */
     public function user()
     {
@@ -40,7 +40,7 @@ class PostReaction extends Model
     /**
      * Define the relationship with the posts table
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Post>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Post, PostReaction>
      */
     public function post()
     {
@@ -50,7 +50,7 @@ class PostReaction extends Model
     /**
      * Define the relationship with the reactions table
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Reaction>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Reaction, PostReaction>
      */
     public function reaction()
     {
