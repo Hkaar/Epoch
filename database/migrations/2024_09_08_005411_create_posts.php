@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->text('content')->default('Nothing here to see');
+            $table->text('content')->nullable();
             $table->timestamps();
         });
     }
