@@ -11,7 +11,7 @@
         <div class="flex flex-col gap-3">
           <label for="username" class="font-semibold">Username</label>
           <input type="text" name="username" id="username" class="block border-2 border-gray-300 rounded p-2 ease-in-out duration-200" placeholder="Enter a name">
-        
+
           @error('username')
             <span class="text-danger">{{ $message }}</span>
           @enderror
@@ -20,7 +20,7 @@
         <div class="flex flex-col gap-3">
           <label for="email" class="font-semibold">Email</label>
           <input type="email" name="email" id="email" class="block border-2 border-gray-300 rounded p-2 ease-in-out duration-200" placeholder="Enter your email or username">
-        
+
           @error('email')
             <span class="text-danger">{{ $message }}</span>
           @enderror
@@ -29,7 +29,7 @@
         <div class="flex flex-col gap-3">
           <label for="password" class="font-semibold">Password</label>
           <input type="password" name="password" id="password" class="block border-2 border-gray-300 rounded p-2 ease-in-out duration-200" placeholder="Enter a password">
-        
+
           @error('password')
             <span class="text-danger">{{ $message }}</span>
           @enderror
@@ -38,7 +38,7 @@
         <div class="flex flex-col gap-3">
           <label for="password_confirmation" class="font-semibold">Confirm your Password</label>
           <input type="password" name="password_confirmation" id="password_confirmation" class="block border-2 border-gray-300 rounded p-2 ease-in-out duration-200" placeholder="Enter the password again">
-        
+
           @error('password_confirmation')
             <span class="text-danger">{{ $message }}</span>
           @enderror
