@@ -13,14 +13,24 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
+        'username',
         'name',
         'email',
         'password',
+        'role_id',
+        'img',
     ];
 
     /**
@@ -42,4 +52,66 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Define the relationship with the roles table
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Role, User>
+     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id', 'id');
+    }
+
+    /**
+     * Define the relationship with the user following table for followers
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<User>
+     */
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'user_following', 'user_id', 'follower_id');
+    }
+
+    /**
+     * Define the relationship with the user following table for following
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<User>
+     */
+    public function following()
+    {
+        return $this->belongsToMany(User::class, 'user_following', 'follower_id', 'user_id');
+    }
+
+    /**
+     * Define the relationship with the comments table
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<Comment>
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    /**
+     * Define the relationship with the replies table
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<Reply>
+     */
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
+    /**
+     * Checks if the user has a certain role
+     */
+    public function checkRole(array|string $roles): bool
+    {
+        if (is_string($roles)) {
+            return $this->role->name === $roles;
+        }
+
+        return in_array($this->role->name, $roles, true);
+    }
 }
