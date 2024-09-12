@@ -1,3 +1,5 @@
+import 'material-symbols';
+
 import.meta.glob([
     "../images/**/*",
 ]);
