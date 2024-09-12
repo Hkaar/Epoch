@@ -1,3 +1,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .font-var-thin {
+    font-variation-settings: 'wght' 100;
+  }
+
+  .font-var-extralight {
+    font-variation-settings: 'wght' 200;
+  }
+
+  .font-var-light {
+    font-variation-settings: 'wght' 300;
+  }
+
+  .font-var-normal {
+    font-variation-settings: 'wght' 400;
+  }
+
+  .font-var-medium {
+    font-variation-settings: 'wght' 500;
+  }
+
+  .font-var-semibold {
+    font-variation-settings: 'wght' 600;
+  }
+
+  .font-var-bold {
+    font-variation-settings: 'wght' 700;
+  }
+
+  .background-cover {
+    background-size: cover;
+  }
+
+  .background-contain {
+    background-size: contain;
+  }
+}
+
+@layer components {
+  .side-nav-item {
+    @apply flex items-center w-full py-2 justify-center gap-2 rounded-md hover:text-gray-400 active:scale-90 active:text-gray-800 duration-200 ease-in-out transition-all;
+  }
+
+  .side-nav-item.active {
+    @apply bg-gray-300 text-gray-800;
+  }
+}
