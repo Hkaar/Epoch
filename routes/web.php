@@ -13,12 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::group(['namespace' => "App\Http\Controllers"], function () {
-    //
+    Route::get('/', 'HomeController@welcome')->name('/');
+    Route::get('home', 'HomeController@index')->name('home');
+    Route::get('browse', 'HomeController@browse')->name('browse');
 });
 
 Route::group(['namespace' => "App\Http\Controllers\Auth"], function () {
@@ -35,6 +33,13 @@ Route::group(['namespace' => "App\Http\Controllers\Auth"], function () {
     });
 });
 
-Route::group(['namespace' => "App\Http\Controllers\Admin"], function () {
-    //
+Route::group(['namespace' => "App\Http\Controllers\Admin", 'prefix' => 'manage'], function () {
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('home', 'HomeController@index')->name('admin.home');
+
+        Route::resource('users', 'UserController')->names('admin.users');
+        Route::resource('posts', 'PostController')->names('admin.posts');
+        Route::resource('comments', 'CommentController')->names('admin.comments');
+        Route::resource('replies', 'ReplyController')->names('admin.replies');
+    });
 });
