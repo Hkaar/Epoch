@@ -84,6 +84,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Definne the relationship with posts
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<Post>
+     */
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'user_id', 'id');
+    }
+
+    /**
      * Define the relationship with the comments table
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany<Comment>

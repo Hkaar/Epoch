@@ -22,17 +22,18 @@ class Post extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'user_id',
         'content',
     ];
 
     /**
      * Define the relationship with the users table
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<User>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<User, Post>
      */
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_posts');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     /**
