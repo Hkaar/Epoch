@@ -18,7 +18,7 @@
 
     <div id="navbar-collapse-with-animation" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
       <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
-        
+
         <a class="font-medium text-red-600 hover:text-gray-400 dark:text-red-400 dark:hover:text-neutral-500 flex items-center gap-1" href="{{ route('logout') }}">
           <i class="material-symbols-outlined font-var-light">
             logout

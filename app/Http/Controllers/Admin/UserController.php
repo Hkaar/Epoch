@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    use Uploader, Modelor;
+    use Modelor, Uploader;
 
     /**
      * Display a listing of the resource.
@@ -23,7 +23,7 @@ class UserController extends Controller
         $users = User::paginate(20);
 
         return view('admin.users.index', [
-            "users" => $users,
+            'users' => $users,
         ]);
     }
 
@@ -57,7 +57,7 @@ class UserController extends Controller
         $user = new User;
         $user->fill($$validated);
 
-        if ($request->hasFile($img)) {
+        if ($request->hasFile('img')) {
             $filePath = $this->uploadImage($request->file('img'));
             $user->img = $filePath;
         }

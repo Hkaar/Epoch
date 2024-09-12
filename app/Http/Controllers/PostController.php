@@ -7,15 +7,9 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     /**
-     * Show the post show page
-     */
-    public function show(int $id)
-    {
-        //
-    }
-
-    /**
      * Show the page for creating posts
+     *
+     * @return void
      */
     public function create()
     {
@@ -24,6 +18,8 @@ class PostController extends Controller
 
     /**
      * Store the post
+     *
+     * @return void
      */
     public function store(Request $request)
     {
@@ -31,7 +27,19 @@ class PostController extends Controller
     }
 
     /**
+     * Show the post show page
+     *
+     * @return void
+     */
+    public function show(int $id)
+    {
+        //
+    }
+
+    /**
      * Show the post edit page
+     *
+     * @return void
      */
     public function edit(int $id)
     {
@@ -40,9 +48,8 @@ class PostController extends Controller
 
     /**
      * Destroy the post
+     *
+     * @return void
      */
-    public function destroy(int $id)
-    {
-
-    }
+    public function destroy(int $id) {}
 }

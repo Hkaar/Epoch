@@ -26,21 +26,22 @@ class MakeUser extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): int
     {
         if (Role::count() <= 0) {
             $this->error("\nRole table is empty, please seed the database first!");
+
             return 1;
         }
 
-        $username = $this->argument('username') 
-            ? $this->argument('username') 
+        $username = $this->argument('username')
+            ? $this->argument('username')
             : $this->ask("What's the name of the user? ");
 
         $email = $this->argument('email')
             ? $this->argument('email')
             : $this->ask("What's the email that's going to be used? ");
-        
+
         $validator = Validator::make([
             'username' => $this->argument('username'),
             'email' => $this->argument('email'),
@@ -51,6 +52,7 @@ class MakeUser extends Command
 
         if ($validator->fails()) {
             $this->error("\nUsername and/or email was already taken!");
+
             return 1;
         }
 
@@ -62,7 +64,7 @@ class MakeUser extends Command
             $this->error('\nFailed to verify password!\n');
 
             return 1;
-        };
+        }
 
         $roleName = $this->argument('role')
             ? $this->argument('role')
@@ -84,7 +86,6 @@ class MakeUser extends Command
             'role_id' => $role->id,
         ])->save();
 
-
         $this->info("\nGenerated User Profile\n" .
             "----------------------\n" .
             "username\t: " . $username . "\n" .
@@ -101,8 +102,8 @@ class MakeUser extends Command
      */
     private function confirmPassword(string $expected, int $tries = 3): bool
     {
-        for ($i=0; $i < $tries; $i++) { 
-            $answer = $this->ask("Please confirm the password");
+        for ($i = 0; $i < $tries; $i++) {
+            $answer = $this->ask('Please confirm the password');
 
             if ($answer === $expected) {
                 return true;

@@ -1,5 +1,3 @@
-import Swal from "sweetalert2";
-
 /**
  * A function to toggle the side bar
  */

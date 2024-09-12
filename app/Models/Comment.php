@@ -49,8 +49,8 @@ class Comment extends Model
 
     /**
      * Define relationship with replies
-     * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<Reply>
      */
     public function replies()
     {

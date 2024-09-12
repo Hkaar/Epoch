@@ -85,7 +85,7 @@ class User extends Authenticatable
 
     /**
      * Definne the relationship with posts
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany<Post>
      */
     public function posts()

@@ -7,7 +7,6 @@ use App\Http\Requests\CommentCreateRequest;
 use App\Http\Requests\CommentEditRequest;
 use App\Models\Comment;
 use App\Traits\Modelor;
-use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {

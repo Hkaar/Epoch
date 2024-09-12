@@ -8,11 +8,10 @@ use App\Http\Requests\PostEditRequest;
 use App\Models\Post;
 use App\Traits\Modelor;
 use App\Traits\Uploader;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    use Uploader, Modelor;
+    use Modelor, Uploader;
 
     /**
      * Display a listing of the resource.
@@ -103,7 +102,6 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        $post->users()->detach();
         $post->comments()->delete();
         $post->contents()->delete();
 

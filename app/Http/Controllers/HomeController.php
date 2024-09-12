@@ -6,6 +6,8 @@ class HomeController extends Controller
 {
     /**
      * Show the home page
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function index()
     {
@@ -14,6 +16,8 @@ class HomeController extends Controller
 
     /**
      * Show the browse page
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function browse()
     {
@@ -22,6 +26,8 @@ class HomeController extends Controller
 
     /**
      * Show the welcome / landing page
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function welcome()
     {

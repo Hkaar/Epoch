@@ -1,6 +1,6 @@
 <aside id="sideBar" class="min-w-16 fixed top-0 z-20 h-screen -translate-x-full overflow-y-auto bg-white px-6 py-4 shadow-xl transition-all duration-300 ease-in-out dark:bg-gray-600 dark:text-white md:h-auto md:min-h-screen md:w-auto lg:relative lg:translate-x-0">
   <!-- This div is here because of tailwind not registering classes properly -->
-  
+
   <div class="lg:min-w-72 hidden h-screen min-w-full ps-3"></div>
 
   <div class="flex flex-col justify-center gap-4">
