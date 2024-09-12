@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CommentCreateRequest;
-use App\Http\Requests\CommentEditRequest;
-use App\Models\Comment;
+use App\Http\Requests\ReplyCreateRequest;
+use App\Http\Requests\ReplyEditRequest;
+use App\Models\Reply;
 use App\Traits\Modelor;
 
-class CommentController extends Controller
+class ReplyController extends Controller
 {
     use Modelor;
 
@@ -19,10 +19,10 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $comments = Comment::paginate(20);
+        $replies = Reply::paginate(20);
 
-        return view('admin.comments.index', [
-            'comments' => $comments,
+        return view('admin.replies.index', [
+            'replies' => $replies,
         ]);
     }
 
@@ -33,7 +33,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        return view('admin.comments.create');
+        return view('admin.replies.create');
     }
 
     /**
@@ -41,12 +41,12 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(CommentCreateRequest $request)
+    public function store(ReplyCreateRequest $request)
     {
-        $comment = new Comment;
-        $comment->fill($request->validated())->save();
+        $reply = new Reply;
+        $reply->fill($request->validated())->save();
 
-        return redirect()->route('admin.comments.index');
+        return redirect()->route('admin.replies.index');
     }
 
     /**
@@ -56,10 +56,10 @@ class CommentController extends Controller
      */
     public function show(int $id)
     {
-        $comment = Comment::findOrFail($id);
+        $reply = Reply::findOrFail($id);
 
-        return view('admin.comments.show', [
-            'comment' => $comment,
+        return view('admin.replies.show', [
+            'reply' => $reply,
         ]);
     }
 
@@ -70,10 +70,10 @@ class CommentController extends Controller
      */
     public function edit(int $id)
     {
-        $comment = Comment::findOrFail($id);
+        $reply = Reply::findOrFail($id);
 
-        return view('admin.comments.edit', [
-            'comment' => $comment,
+        return view('admin.replies.show', [
+            'reply' => $reply,
         ]);
     }
 
@@ -82,14 +82,14 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(CommentEditRequest $request, int $id)
+    public function update(ReplyEditRequest $request, int $id)
     {
-        $comment = Comment::findOrFail($id);
+        $reply = Reply::findOrFail($id);
 
-        $this->updateModel($comment, $request->validated());
-        $comment->save();
+        $this->updateModel($reply, $request->validated());
+        $reply->save();
 
-        return redirect()->route('admin.comments.index');
+        return redirect()->route('admin.replies.index');
     }
 
     /**
@@ -99,10 +99,8 @@ class CommentController extends Controller
      */
     public function destroy(int $id)
     {
-        $comment = Comment::findOrFail($id);
-
-        $comment->replies()->delete();
-        $comment->delete();
+        $reply = Reply::findOrFail($id);
+        $reply->delete();
 
         return response(null);
     }
