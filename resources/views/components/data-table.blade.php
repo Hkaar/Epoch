@@ -33,7 +33,7 @@
               @endforeach
             </tr>
           </thead>
-          
+
           <tbody>
             @if ($slot->hasActualContent())
               {{ $slot }}

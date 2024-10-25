@@ -7,8 +7,5 @@ class NotificationService
     /**
      * Send a notification
      */
-    public function sendNotification(string $title, string $content, $roles)
-    {
-            
-    }
+    public function sendNotification(string $title, string $content, $roles) {}
 }

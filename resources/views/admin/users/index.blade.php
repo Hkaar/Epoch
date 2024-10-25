@@ -6,10 +6,10 @@
   $title = 'user';
 
   $columns = [
-    ['width' => 5, 'name' => 'ID'], 
-    'Username', 
-    'Email', 
-    'Role', 
+    ['width' => 5, 'name' => 'ID'],
+    'Username',
+    'Email',
+    'Role',
     ['width' => 18, 'name' => 'Actions']
   ];
 

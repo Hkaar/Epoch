@@ -28,7 +28,7 @@ class NotificationType extends Model
 
     /**
      * Define the relationship with notifications
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function notifications()
@@ -38,8 +38,8 @@ class NotificationType extends Model
 
     /**
      * Scope a query by the given name
-     * 
-     * @param \Illuminate\Database\Eloquent\Builder<NotificationType> $query
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder<NotificationType>  $query
      * @param \Illuminate\Database\Eloquent\Builder<NotificationType>
      */
     public function scopeStrictByName(Builder $query, string $name)

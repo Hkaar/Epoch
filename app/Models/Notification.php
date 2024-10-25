@@ -30,7 +30,7 @@ class Notification extends Model
 
     /**
      * Define the relationship with notification types
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<NotificationType, Notification>
      */
     public function type()
@@ -40,7 +40,7 @@ class Notification extends Model
 
     /**
      * Define the relationship with users
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<User, Notification>
      */
     public function user()

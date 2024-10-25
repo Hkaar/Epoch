@@ -7,7 +7,7 @@
   <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
     <ul class="space-y-1.5">
       <li>
-        <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-700 rounded-lg hover:bg-gray-100 dark:bg-neutral-700 dark:text-white {{ $active === 'home' ? 'bg-gray-100' : '' }}" 
+        <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-700 rounded-lg hover:bg-gray-100 dark:bg-neutral-700 dark:text-white {{ $active === 'home' ? 'bg-gray-100' : '' }}"
           href="{{ $active === 'home' ? '#' : route('admin.home') }}">
           <i class="material-symbols-outlined font-var-light">home</i>
           Dashboard
@@ -15,7 +15,7 @@
       </li>
 
       <li>
-        <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-gray-700 rounded-lg hover:bg-gray-100 dark:bg-neutral-700 dark:text-white {{ $active === 'user' ? 'bg-gray-100' : '' }}" 
+        <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-gray-700 rounded-lg hover:bg-gray-100 dark:bg-neutral-700 dark:text-white {{ $active === 'user' ? 'bg-gray-100' : '' }}"
           href="{{ $active === 'user' ? '#' : route('admin.users.index') }}">
           <i class="material-symbols-outlined font-var-light">person</i>
           Users
