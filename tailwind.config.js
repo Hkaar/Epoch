@@ -16,6 +16,10 @@ export default {
         primary: "#071952",
         secondary: "#153494",
         tertiary: "#2451DB",
+        'twitter': "#1d9df0",
+      },
+      fontFamily: {
+        'figtree': ['Figtree', 'sans-ui'],
       }
     },
   },
