@@ -1,3 +1,4 @@
+import 'preline';
 import 'material-symbols';
 
 import.meta.glob([

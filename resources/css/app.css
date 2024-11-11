@@ -51,11 +51,19 @@
 }
 
 @layer components {
-  .side-nav-item {
-    @apply flex items-center w-full py-2 justify-center gap-2 rounded-md hover:text-gray-400 active:scale-90 active:text-gray-800 duration-200 ease-in-out transition-all;
+  .btn {
+    @apply p-2 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent hover:scale-105 active:scale-95 active:opacity-60;
   }
 
-  .side-nav-item.active {
-    @apply bg-gray-300 text-gray-800;
+  .form-control {
+    @apply py-3 px-4 block w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-700 dark:border-transparent dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600;
+  }
+
+  .form-control-icon {
+    @apply absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50;
+  }
+
+  .form-control-checkbox {
+    @apply shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800;
   }
 }

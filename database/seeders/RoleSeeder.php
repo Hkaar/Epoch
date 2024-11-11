@@ -12,7 +12,7 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        $roles = ['admin', 'moderator', 'member'];
+        $roles = ['admin', 'moderator', 'member', 'operator'];
 
         foreach ($roles as $role) {
             if (! Role::StrictByName($role)->first()) {

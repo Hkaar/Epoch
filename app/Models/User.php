@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enum\RoleEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -100,7 +101,7 @@ class User extends Authenticatable
      */
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class, 'user_id', 'id');
     }
 
     /**
@@ -110,10 +111,22 @@ class User extends Authenticatable
      */
     public function replies()
     {
-        return $this->hasMany(Reply::class);
+        return $this->hasMany(Reply::class, 'user_id', 'id');
     }
 
     /**
+     * Define the relationship with the replies table
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<Notification>
+     */
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class, 'user_id', 'id');
+    }
+
+    /**
+     * THIS IS DEPRECATED DO NOT USE THIS!!
+     *
      * Checks if the user has a certain role
      *
      * @param  array<string>|string  $roles
@@ -125,5 +138,21 @@ class User extends Authenticatable
         }
 
         return in_array($this->role->name, $roles, true);
+    }
+
+    /**
+     * Check if the user has a role that is privileged
+     *
+     * @param  array<RoleEnum|int>|int|RoleEnum  $roles
+     */
+    public function checkPermission(int|array|RoleEnum $roles): bool
+    {
+        $roles = is_array($roles) ? $roles : [$roles];
+
+        $roles = array_map(function ($type) {
+            return $type instanceof RoleEnum ? $type->value : $type;
+        }, $roles);
+
+        return in_array($this->role_id, $roles);
     }
 }

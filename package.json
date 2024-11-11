@@ -7,6 +7,7 @@
     },
     "devDependencies": {
         "@eslint/js": "^9.9.1",
+        "@tailwindcss/forms": "^0.5.9",
         "autoprefixer": "^10.4.20",
         "axios": "^1.6.4",
         "eslint": "^9.9.1",
@@ -20,6 +21,7 @@
     },
     "dependencies": {
         "material-symbols": "^0.23.0",
+        "preline": "^2.4.1",
         "sweetalert2": "^11.6.13"
     }
 }
