@@ -44,7 +44,7 @@
   </li>
   <li>
       <a href="#" class="flex md:justify-start items-center gap-4 justify-center  mr-4 md:w-fit  hover:bg-zinc-900 hover:cursor-pointer size-14 md:px-6 md:py-4 hover:rounded-full">
-          <span> 
+          <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
           </span>
           <span class="hidden md:block md:font-var-normal">Profile</span>

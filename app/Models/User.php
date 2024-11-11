@@ -143,7 +143,7 @@ class User extends Authenticatable
     /**
      * Check if the user has a role that is privileged
      *
-     * @param array<RoleEnum|int>|int|RoleEnum $roles
+     * @param  array<RoleEnum|int>|int|RoleEnum  $roles
      */
     public function checkPermission(int|array|RoleEnum $roles): bool
     {
