@@ -1,12 +1,14 @@
-<header class="flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-white shadow-sm text-sm py-3 dark:bg-neutral-800">
+<header class="flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-white shadow-sm text-sm py-4 dark:bg-neutral-800">
   <nav class="w-full mx-auto px-6 sm:flex sm:items-center sm:justify-between">
     <div class="flex items-center justify-between">
       <span class="flex gap-3 items-center">
-        <button type="button" class="btn side-bar-toggle border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-white dark:hover:bg-white/10 p-2">
+        <button type="button" class="btn lg:hidden border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-white dark:hover:bg-white/10 p-2"
+          aria-haspopup="dialog" aria-expanded="false" aria-controls="sidebar"
+          aria-label="Toggle navigation" data-hs-overlay="#sidebar">
           <i class="material-symbols-outlined font-var-light">menu</i>
         </button>
 
-        {{-- <x-breadcrumb></x-breadcrumb> --}}
+        <x-breadcrumb></x-breadcrumb>
       </span>
 
       <div class="sm:hidden">
