@@ -142,23 +142,9 @@ class User extends Authenticatable
     }
 
     /**
-     * Scope a query by including the given roles
-     */
-    public function scopeByIncludingJabatan(Builder $query, array|RoleEnum|int $roles)
-    {
-        $roles = is_array($roles) ? $roles : [$roles];
-
-        $roles = array_map(function ($type) {
-            return $type instanceof RoleEnum ? $type->value : $type;
-        }, $roles);
-
-        return $query->whereIn('role_id', $roles);
-    }
-
-    /**
      * Check if the user has a role that is privileged
      *
-     * @param array<RoleEnum|int>|int|RoleEnum
+     * @param array<RoleEnum|int>|int|RoleEnum $roles
      */
     public function checkPermission(int|array|RoleEnum $roles): bool
     {
