@@ -1,7 +1,11 @@
+import preline from 'preline/plugin';
+import preset from './vendor/filament/support/tailwind.config.preset'
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: "selector",
   mode: "jit",
+  presets: [preset],
   content: [
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
@@ -25,8 +29,7 @@ export default {
     },
   },
   plugins: [
-    require('preline/plugin'),
-    require('@tailwindcss/forms'),
+    preline,
   ],
 }
 
