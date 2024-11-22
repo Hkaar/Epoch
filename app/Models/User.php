@@ -4,14 +4,17 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enum\RoleEnum;
+use Filament\Actions\Concerns\HasName;
+use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Storage;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasName;
 
     /**
      * The table associated with the model.
@@ -55,6 +58,26 @@ class User extends Authenticatable
     ];
 
     /**
+     * Implements the function to check if the user can access the admin panel
+     * 
+     * @param \Filament\Panel $panel
+     * @return bool
+     */
+    public function canAccessPanel(\Filament\Panel $panel): bool
+    {
+        return $this->checkPermission([RoleEnum::Admin, RoleEnum::Operator, RoleEnum::Moderator]);
+    }
+
+    /**
+     * Get the avatar image url for filament
+     * @return string
+     */
+    public function getFilamentAvatarUrl(): string
+    {
+        return $this->img ? Storage::url($this->img) : '';
+    }
+
+    /**
      * Define the relationship with the roles table
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Role, User>
@@ -95,6 +118,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the name of the user
+     * 
+     * @return string
+     */
+    public function getNameAttribute(): string
+    {
+        return isset($this->attributes['name']) ? $this->attributes['name'] : $this->attributes['username']; 
+    }
+
+    /**
      * Define the relationship with the comments table
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany<Comment>
@@ -125,11 +158,11 @@ class User extends Authenticatable
     }
 
     /**
-     * THIS IS DEPRECATED DO NOT USE THIS!!
-     *
      * Checks if the user has a certain role
      *
      * @param  array<string>|string  $roles
+     * 
+     * @deprecated use checkPermission instead
      */
     public function checkRole($roles): bool
     {
