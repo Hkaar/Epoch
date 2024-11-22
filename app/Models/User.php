@@ -10,8 +10,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Storage;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens, HasFactory, Notifiable, HasName;
 
@@ -55,6 +56,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Implements the function to check if the user can access the admin panel
+     * 
+     * @param \Filament\Panel $panel
+     * @return bool
+     */
+    public function canAccessPanel(\Filament\Panel $panel): bool
+    {
+        return $this->checkPermission([RoleEnum::Admin, RoleEnum::Operator, RoleEnum::Moderator]);
+    }
+
+    /**
+     * Get the avatar image url for filament
+     * @return string
+     */
+    public function getFilamentAvatarUrl(): string
+    {
+        return $this->img ? Storage::url($this->img) : '';
+    }
 
     /**
      * Define the relationship with the roles table
@@ -137,11 +158,11 @@ class User extends Authenticatable
     }
 
     /**
-     * THIS IS DEPRECATED DO NOT USE THIS!!
-     *
      * Checks if the user has a certain role
      *
      * @param  array<string>|string  $roles
+     * 
+     * @deprecated use checkPermission instead
      */
     public function checkRole($roles): bool
     {
