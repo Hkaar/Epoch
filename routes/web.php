@@ -34,4 +34,4 @@ Route::group(['namespace' => "App\Http\Controllers\Auth"], function () {
     });
 });
 
-Route::redirect('/admin/login', '/login')->name('filament.auth.login');
+Route::redirect('admin/login', '/login')->name('filament.auth.login');

@@ -3,11 +3,11 @@
 namespace App\Providers;
 
 use Filament\Support\Assets\Css;
-use Illuminate\Support\Facades\Vite;
 use Filament\Support\Facades\FilamentAsset;
-use Illuminate\Support\ServiceProvider;
 use Filament\Support\Facades\FilamentView;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Vite;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,9 +26,9 @@ class AppServiceProvider extends ServiceProvider
     {
         FilamentAsset::register([
             Css::make('admin-css', Vite::useHotFile('hot')
-               ->asset('resources/css/app.css'))
+                ->asset('resources/css/app.css')),
         ]);
 
-        FilamentView::registerRenderHook('panels::body.end', fn(): string => Blade::render("@vite('resources/js/app.js')"));
+        FilamentView::registerRenderHook('panels::body.end', fn (): string => Blade::render("@vite('resources/js/app.js')"));
     }
 }

@@ -5,5 +5,5 @@
 @section('content')
   <div class="flex min-h-screen">
     Landing Page
-  </div 
+  </div
 @endsection

@@ -9,12 +9,12 @@ use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
-use Storage;
 
 class User extends Authenticatable implements FilamentUser
 {
-    use HasApiTokens, HasFactory, Notifiable, HasName;
+    use HasApiTokens, HasFactory, HasName, Notifiable;
 
     /**
      * The table associated with the model.
@@ -59,9 +59,6 @@ class User extends Authenticatable implements FilamentUser
 
     /**
      * Implements the function to check if the user can access the admin panel
-     * 
-     * @param \Filament\Panel $panel
-     * @return bool
      */
     public function canAccessPanel(\Filament\Panel $panel): bool
     {
@@ -70,7 +67,6 @@ class User extends Authenticatable implements FilamentUser
 
     /**
      * Get the avatar image url for filament
-     * @return string
      */
     public function getFilamentAvatarUrl(): string
     {
@@ -119,12 +115,10 @@ class User extends Authenticatable implements FilamentUser
 
     /**
      * Get the name of the user
-     * 
-     * @return string
      */
     public function getNameAttribute(): string
     {
-        return isset($this->attributes['name']) ? $this->attributes['name'] : $this->attributes['username']; 
+        return isset($this->attributes['name']) ? $this->attributes['name'] : $this->attributes['username'];
     }
 
     /**
@@ -161,7 +155,7 @@ class User extends Authenticatable implements FilamentUser
      * Checks if the user has a certain role
      *
      * @param  array<string>|string  $roles
-     * 
+     *
      * @deprecated use checkPermission instead
      */
     public function checkRole($roles): bool
