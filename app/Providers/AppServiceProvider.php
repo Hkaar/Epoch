@@ -24,10 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        FilamentAsset::register([
-            Css::make('admin-css', Vite::useHotFile('hot')
-                ->asset('resources/css/app.css')),
-        ]);
+        // FilamentAsset::register([
+        //     Css::make('admin-css', Vite::useHotFile('hot')
+        //         ->asset('resources/css/app.css')),
+        // ]);
 
         FilamentView::registerRenderHook('panels::body.end', fn (): string => Blade::render("@vite('resources/js/app.js')"));
     }
