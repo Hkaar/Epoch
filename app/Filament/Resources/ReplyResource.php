@@ -2,11 +2,19 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ReplyResource\Pages;
+use App\Filament\Resources\ReplyResource\Pages\CreateReply;
+use App\Filament\Resources\ReplyResource\Pages\EditReply;
+use App\Filament\Resources\ReplyResource\Pages\ListReplies;
+use App\Filament\Resources\ReplyResource\Pages\ViewReply;
 use App\Models\Reply;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class ReplyResource extends Resource
@@ -28,14 +36,14 @@ class ReplyResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user.username')
+                TextColumn::make('user.username')
                     ->label('User')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('comment.user.username')
+                TextColumn::make('comment.user.username')
                     ->label('Linked Comment')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('content')
+                TextColumn::make('content')
                     ->label('Content')
                     ->searchable()
                     ->lineClamp(2),
@@ -44,13 +52,13 @@ class ReplyResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                ViewAction::make(),
+                EditAction::make(),
+                DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -65,10 +73,10 @@ class ReplyResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListReplies::route('/'),
-            'create' => Pages\CreateReply::route('/create'),
-            'view' => Pages\ViewReply::route('/{record}'),
-            'edit' => Pages\EditReply::route('/{record}/edit'),
+            'index' => ListReplies::route('/'),
+            'create' => CreateReply::route('/create'),
+            'view' => ViewReply::route('/{record}'),
+            'edit' => EditReply::route('/{record}/edit'),
         ];
     }
 }
