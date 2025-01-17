@@ -4,16 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     public function up(): void
     {
         Schema::create('notifications', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('title');
             $table->text('content');
             $table->foreignId('notification_type_id')->constrained('notification_types')->onDelete('CASCADE')->onUpdate('CASCADE');
-            $table->foreignId('user_id')->constrained('users')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreignUuid('user_id')->constrained('users')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->timestamps();
         });
     }

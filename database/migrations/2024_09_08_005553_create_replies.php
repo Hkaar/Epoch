@@ -4,14 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     public function up(): void
     {
         Schema::create('replies', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('CASCADE')->onUpdate('CASCADE');
-            $table->foreignId('comment_id')->constrained('comments')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->uuid('id');
+            $table->foreignUuid('user_id')->constrained('users')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreignUuid('comment_id')->constrained('comments')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->text('content');
             $table->timestamps();
         });
