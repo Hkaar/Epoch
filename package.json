@@ -3,8 +3,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
-        "lint": "./node_modules/.bin/eslint ./resources/js/"
+        "build": "vite build"
     },
     "devDependencies": {
         "@eslint/js": "^9.9.1",
