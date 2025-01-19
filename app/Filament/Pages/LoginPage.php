@@ -6,8 +6,6 @@ use Filament\Forms\Components\Component;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Pages\Auth\Login as BaseAuth;
-use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\HtmlString;
 
 class LoginPage extends BaseAuth
 {
@@ -21,7 +19,7 @@ class LoginPage extends BaseAuth
             ]);
     }
 
-    public function getUsernameFormComponent()
+    public function getUsernameFormComponent(): TextInput
     {
         return TextInput::make('login')
             ->label('Username or Email')
@@ -37,16 +35,14 @@ class LoginPage extends BaseAuth
     {
         return TextInput::make('password')
             ->label(__('filament-panels::pages/auth/login.form.password.label'))
-            ->hint(filament()->hasPasswordReset() ? new HtmlString(Blade::render('<x-filament::link :href="filament()->getRequestPasswordResetUrl()" tabindex="3"> {{ __(\'filament-panels::pages/auth/login.actions.request_password_reset.label\') }}</x-filament::link>')) : null)
             ->password()
-            ->revealable(filament()->arePasswordsRevealable())
+            ->revealable()
             ->autocomplete('current-password')
             ->required()
             ->prefixIcon('lucide-key-round')
             ->placeholder('Password')
             ->extraInputAttributes(['tabindex' => 2]);
     }
-
 
     protected function getCredentialsFromFormData(array $data): array
     {

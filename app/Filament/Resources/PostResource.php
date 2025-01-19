@@ -14,11 +14,9 @@ use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section as FormSection;
 use Filament\Forms\Components\Select as FormSelect;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\BulkActionGroup;
-use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
@@ -55,8 +53,8 @@ class PostResource extends Resource
                                     ->required(),
                                 RichEditor::make('content')
                                     ->required()
-                                    ->columnSpanFull()
-                            ])
+                                    ->columnSpanFull(),
+                            ]),
                     ]),
                 FormSection::make('Post Contents')
                     ->icon('lucide-message-square-text')
@@ -74,8 +72,8 @@ class PostResource extends Resource
                                         RichEditor::make('content')
                                             ->columnSpanFull()
                                             ->required(),
-                                    ])
-                            ])
+                                    ]),
+                            ]),
                     ]),
             ]);
     }

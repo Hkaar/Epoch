@@ -60,8 +60,8 @@ class ReplyResource extends Resource
                                 RichEditor::make('content')
                                     ->columnSpanFull()
                                     ->required(),
-                            ])
-                    ])
+                            ]),
+                    ]),
             ]);
     }
 

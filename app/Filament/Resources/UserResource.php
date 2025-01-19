@@ -6,8 +6,8 @@ use App\Filament\Resources\UserResource\Pages\CreateUser;
 use App\Filament\Resources\UserResource\Pages\EditUser;
 use App\Filament\Resources\UserResource\Pages\ListUsers;
 use App\Filament\Resources\UserResource\Pages\ViewUser;
-use App\Models\User;
 use App\Models\Role;
+use App\Models\User;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid as FormGrid;
 use Filament\Forms\Components\Section as FormSection;
@@ -74,8 +74,8 @@ class UserResource extends Resource
                                 ->password()
                                 ->required()
                                 ->maxLength(255),
-                        ])
-                    ])
+                        ]),
+                    ]),
             ]);
     }
 

@@ -60,9 +60,9 @@ class CommentResource extends Resource
 
                                 RichEditor::make('content')
                                     ->columnSpanFull()
-                                    ->required()
-                            ])
-                    ])
+                                    ->required(),
+                            ]),
+                    ]),
             ]);
     }
 

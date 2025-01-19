@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    use HasUuids, HasFactory;
+    use HasFactory, HasUuids;
 
     /**
      * The table associated with the model.

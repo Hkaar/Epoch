@@ -58,13 +58,13 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->renderHook(
                 'panels::head.start',
-                fn(): string => Vite::useBuildDirectory('build')
+                fn (): string => Vite::useBuildDirectory('build')
                     ->withEntryPoints(['resources/js/app.js'])
                     ->toHtml()
             )
             ->renderHook(
                 'panels::head.start',
-                fn(): string => Vite::useBuildDirectory('build')
+                fn (): string => Vite::useBuildDirectory('build')
                     ->withEntryPoints(['resources/css/app.css'])
                     ->toHtml()
             );
