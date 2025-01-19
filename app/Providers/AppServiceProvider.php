@@ -2,11 +2,8 @@
 
 namespace App\Providers;
 
-use Filament\Support\Assets\Css;
-use Filament\Support\Facades\FilamentAsset;
-use Filament\Support\Facades\FilamentView;
-use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\Vite;
+use Filament\Facades\Filament;
+use Filament\Navigation\NavigationGroup;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,11 +21,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // FilamentAsset::register([
-        //     Css::make('admin-css', Vite::useHotFile('hot')
-        //         ->asset('resources/css/app.css')),
-        // ]);
-
-        FilamentView::registerRenderHook('panels::body.end', fn (): string => Blade::render("@vite('resources/js/app.js')"));
+        Filament::serving(function () {
+            Filament::registerNavigationGroups([
+                NavigationGroup::make()
+                    ->label('Content')
+                    ->icon('lucide-message-circle-more'),
+                NavigationGroup::make()
+                    ->label('Management')
+                    ->icon('lucide-key-round'),
+            ]);
+        });
     }
 }

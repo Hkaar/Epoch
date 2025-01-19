@@ -13,7 +13,9 @@ class ListReplies extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make(),
+            CreateAction::make()
+                ->icon('lucide-plus-circle')
+                ->label('New Reply'),
         ];
     }
 }

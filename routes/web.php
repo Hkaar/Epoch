@@ -33,5 +33,3 @@ Route::group(['namespace' => "App\Http\Controllers\Auth"], function () {
         Route::get('logout', 'LogoutController@perform')->name('logout');
     });
 });
-
-Route::redirect('admin/login', '/login')->name('filament.auth.login');
