@@ -6,7 +6,13 @@ use App\Filament\Resources\ReplyResource\Pages\CreateReply;
 use App\Filament\Resources\ReplyResource\Pages\EditReply;
 use App\Filament\Resources\ReplyResource\Pages\ListReplies;
 use App\Filament\Resources\ReplyResource\Pages\ViewReply;
+use App\Models\Comment;
 use App\Models\Reply;
+use App\Models\User;
+use Filament\Forms\Components\Grid as FormGrid;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Section as FormSection;
+use Filament\Forms\Components\Select as FormSelect;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\BulkActionGroup;
@@ -21,14 +27,41 @@ class ReplyResource extends Resource
 {
     protected static ?string $model = Reply::class;
 
-    protected static ?string $navigationGroup = 'Content Management';
-    protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-right';
+    protected static ?string $navigationLabel = 'Replies';
+
+    protected static ?string $modelLabel = 'Replies';
+
+    protected static ?string $recordTitleAttribute = 'content';
+
+    protected static ?string $navigationGroup = 'Content';
+    // protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-right';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                FormSection::make('Reply Details')
+                    ->icon('lucide-info')
+                    ->schema([
+                        FormGrid::make()
+                            ->schema([
+                                FormSelect::make('user_id')
+                                    ->options(User::pluck('username', 'id'))
+                                    ->label('User')
+                                    ->placeholder('Select a user')
+                                    ->searchable()
+                                    ->required(),
+                                FormSelect::make('comment_id')
+                                    ->options(Comment::pluck('content', 'id'))
+                                    ->label('Comment')
+                                    ->placeholder('Select a comment')
+                                    ->searchable()
+                                    ->required(),
+                                RichEditor::make('content')
+                                    ->columnSpanFull()
+                                    ->required(),
+                            ])
+                    ])
             ]);
     }
 
@@ -46,6 +79,7 @@ class ReplyResource extends Resource
                 TextColumn::make('content')
                     ->label('Content')
                     ->searchable()
+                    ->markdown()
                     ->lineClamp(2),
             ])
             ->filters([
