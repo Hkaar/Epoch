@@ -103,7 +103,9 @@ class PostResource extends Resource
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->emptyStateIcon('heroicon-c-chat-bubble-left-right')
+            ->emptyStateDescription('Create a new post to get started!');
     }
 
     public static function getRelations(): array

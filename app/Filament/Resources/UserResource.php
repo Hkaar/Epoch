@@ -104,7 +104,9 @@ class UserResource extends Resource
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->emptyStateIcon('heroicon-s-users')
+            ->emptyStateDescription('Create a new User to get started!');
     }
 
     public static function getRelations(): array

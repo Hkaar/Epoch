@@ -94,7 +94,9 @@ class CommentResource extends Resource
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->emptyStateIcon('heroicon-o-chat-bubble-bottom-center-text')
+            ->emptyStateDescription('Create a new comment to get started!');
     }
 
     public static function getRelations(): array
