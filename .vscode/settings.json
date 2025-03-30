@@ -2,4 +2,11 @@
     "files.associations": {
         "*.css": "tailwindcss"
     },
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/.hg/store/**": true,
+        "**/node_modules/**": true,
+        "**/vendor/**": true
+    }
 }
