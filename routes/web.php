@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,23 +16,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['namespace' => "App\Http\Controllers"], function () {
-    Route::get('/', 'HomeController@welcome')->name('/');
+Route::view('/', 'welcome')->name('welcome');
+Route::view('about', 'company.about')->name('about');
+Route::view('careers', 'company.careers')->name('careers');
 
-    Route::get('home', 'HomeController@index')->name('home');
-    Route::get('browse', 'HomeController@browse')->name('browse');
+Route::middleware('guest')->group(function () {
+    Route::get('login', [LoginController::class, 'show'])->name('login');
+    Route::post('login', [LoginController::class, 'login'])->name('login.post');
+
+    Route::get('register', [RegisterController::class, 'show'])->name('register');
+    Route::post('register', [RegisterController::class, 'register'])->name('register.post');
 });
 
-Route::group(['namespace' => "App\Http\Controllers\Auth"], function () {
-    Route::group(['middleware' => 'guest'], function () {
-        Route::get('login', 'LoginController@show')->name('login');
-        Route::post('login', 'LoginController@login')->name('login.post');
+Route::middleware('auth')->group(function () {
+    Route::view('home', 'home')->name('home');
 
-        Route::get('register', 'RegisterController@show')->name('register');
-        Route::post('register', 'RegisterController@register')->name('register.post');
-    });
-
-    Route::group(['middleware' => 'auth'], function () {
-        Route::get('logout', 'LogoutController@perform')->name('logout');
-    });
+    Route::get('logout', [LogoutController::class, 'perform'])->name('logout');
 });
