@@ -11,13 +11,17 @@ class Footer extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct() {}
+    public function __construct(
+        protected ?string $path = ""
+    ) {}
 
     /**
      * Get the view / contents that represent the component.
      */
     public function render(): View|Closure|string
     {
-        return view('components.footer');
+        return view('components.footer', [
+            'path' => $this->path,
+        ]);
     }
 }
