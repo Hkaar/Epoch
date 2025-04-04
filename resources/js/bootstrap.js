@@ -1,6 +1,6 @@
 import 'preline';
 
-import { createIcons } from 'lucide';
+import { createIcons, Trash } from 'lucide';
 import {
     MessageCircle,
     Home,
@@ -20,6 +20,19 @@ import {
     Send,
     LogIn,
     LogOut,
+    User,
+    Settings,
+    Brush,
+    Shield,
+    Layers,
+    ArrowLeft,
+    Save,
+    Download,
+    RotateCcw,
+    Trash2,
+    Monitor,
+    Sun,
+    Moon,
 } from 'lucide';
 
 createIcons({ 
@@ -44,7 +57,20 @@ createIcons({
         Mail,
         Send,
         LogIn,
-        LogOut
+        LogOut,
+        User,
+        Settings,
+        Brush,
+        Shield,
+        Layers,
+        ArrowLeft,
+        Save,
+        Download,
+        RotateCcw,
+        Trash2,
+        Monitor,
+        Moon,
+        Sun,
     }
 });
 
