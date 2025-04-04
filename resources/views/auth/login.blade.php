@@ -8,7 +8,7 @@
       <div class="flex flex-col items-center gap-4">
         <i data-lucide="box" class="size-96"></i>
 
-        <a href="{{ route('welcome') }}">
+        <a href="{{ route('/') }}">
           <h1 class="text-5xl font-extrabold uppercase">{{ config('app.name') }}</h1>
         </a>
       </div>

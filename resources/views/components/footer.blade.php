@@ -94,13 +94,13 @@
         </div>
 
         <div class="flex items-center gap-x-1.5 text-gray-400 dark:text-neutral-400">
-          <a class="focus:outline-hidden gap-x-2 whitespace-nowrap rounded-lg border border-transparent text-sm font-semibold hover:underline focus:underline disabled:pointer-events-none disabled:opacity-50"
-            href="#">
+          <a class="focus:outline-hidden {{ $path === 'privacy-policy' ? 'underline' : 'hover:underline focus:underline' }} gap-x-2 whitespace-nowrap rounded-lg border border-transparent text-sm font-semibold disabled:pointer-events-none disabled:opacity-50"
+            href="{{ route('privacy-policy') }}">
             Privacy Policy
           </a>
 
-          <a class="focus:outline-hidden gap-x-2 whitespace-nowrap rounded-lg border border-transparent text-sm font-semibold hover:underline focus:underline disabled:pointer-events-none disabled:opacity-50"
-            href="#">
+          <a class="focus:outline-hidden {{ $path === 'tos' ? 'underline' : 'hover:underline focus:underline' }} gap-x-2 whitespace-nowrap rounded-lg border border-transparent text-sm font-semibold disabled:pointer-events-none disabled:opacity-50"
+            href="{{ route('tos') }}">
             Terms of Service
           </a>
         </div>

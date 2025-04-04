@@ -1,5 +1,7 @@
+@props(['user' => auth()->user()])
+
 <header
-  class="sticky top-2 z-50 mx-auto my-2 flex w-full max-w-[98rem] flex-wrap rounded-lg bg-white shadow-md dark:bg-neutral-900 md:flex-nowrap md:justify-start">
+  class="sticky top-2 z-50 mx-auto my-2 flex w-full max-w-[98rem] flex-wrap rounded-lg border bg-white shadow-sm dark:bg-neutral-900 md:flex-nowrap md:justify-start">
   <nav class="relative mx-auto w-full px-4 py-2 sm:px-6 md:flex md:items-center md:justify-between md:gap-3 lg:px-8">
     <div class="flex items-center justify-between gap-x-1">
       <a class="focus:outline-hidden flex-none text-xl font-semibold text-black focus:opacity-80 dark:text-white"
@@ -38,7 +40,7 @@
             <div class="flex flex-col gap-0.5 md:flex-row md:items-center md:justify-end md:gap-1">
               <a class="{{ $path === '' ? 'bg-gray-100 text-gray-700' : 'text-gray-800 hover:bg-gray-100' }} focus:outline-hidden flex items-center gap-x-1.5 rounded-lg p-2 text-sm focus:bg-gray-100 dark:bg-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
                 @auth href="{{ $path === '' ? '#' : route('home') }}" @endauth
-                @guest href="{{ $path === '' ? '#' : route('welcome') }}" @endguest aria-current="page">
+                @guest href="{{ $path === '' ? '#' : route('/') }}" @endguest aria-current="page">
                 <i data-lucide="home" class="size-4"></i>
                 Home
               </a>
@@ -64,18 +66,61 @@
           @guest
             <div class="flex flex-wrap items-center gap-x-1.5">
               <a class="shadow-2xs focus:outline-hidden inline-flex items-center rounded-lg border border-gray-200 bg-white px-2.5 py-[7px] text-sm font-medium text-gray-800 hover:bg-gray-50 focus:bg-gray-100 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
-                href="#">
+                href="{{ route('login') }}">
                 Sign in
               </a>
               <a class="focus:outline-hidden inline-flex items-center rounded-lg bg-primary px-2.5 py-2 text-sm font-medium text-white hover:bg-primary/80 focus:bg-primary/80 disabled:pointer-events-none disabled:opacity-50 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:bg-blue-600"
-                href="#">
+                href="{{ route('register') }}">
                 Get started
               </a>
             </div>
           @endguest
 
           @auth
-            authorized
+            <div class="hs-dropdown relative inline-flex [--trigger:hover]">
+              <button id="hs-dropdown-hover-event" type="button"
+                class="hs-dropdown-toggle shadow-2xs focus:outline-hidden inline-flex items-center gap-x-2 rounded-lg px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-50 focus:bg-gray-50 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
+                aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
+
+                @if ($user->img)
+                  <img src="{{ Storage::url($user->img) }}" alt="Image failed to load!" class="size-8 rounded-full">
+                @else
+                  <img src="{{ Vite::asset('resources/images/default-avatar.png') }}" alt="Image failed to load!"
+                    class="size-8 rounded-full">
+                @endif
+
+                <svg class="size-4 hs-dropdown-open:rotate-180" xmlns="http://www.w3.org/2000/svg" width="24"
+                  height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+
+              <div
+                class="hs-dropdown-menu duration dark:divide-y-neutral-700 mt-2 hidden min-w-60 divide-y divide-gray-200 rounded-lg bg-white opacity-0 shadow-md transition-[opacity,margin] before:absolute before:-top-4 before:start-0 before:h-4 before:w-full after:absolute after:-bottom-4 after:start-0 after:h-4 after:w-full hs-dropdown-open:opacity-100 dark:divide-neutral-700 dark:border dark:border-neutral-700 dark:bg-neutral-800"
+                role="menu" aria-orientation="vertical" aria-labelledby="hs-dropdown-hover-event">
+                <div class="space-y-0.5 p-1">
+                  <a class="focus:outline-hidden flex items-center gap-x-3.5 rounded-lg px-3 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                    href={{ route('home') }}>
+                    <i data-lucide="home" class="size-4"></i>
+                    Home
+                  </a>
+                  <a class="focus:outline-hidden flex items-center gap-x-3.5 rounded-lg px-3 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                    href="{{ route('settings.public-profile') }}">
+                    <i data-lucide="settings" class="size-4"></i>
+                    Settings
+                  </a>
+                </div>
+
+                <div class="space-y-0.5 p-1">
+                  <a class="focus:outline-hidden flex items-center gap-x-3.5 rounded-lg px-3 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                    href={{ route('logout') }}>
+                    <i data-lucide="log-out" class="size-4 stroke-red-700"></i>
+                    <span class="text-red-700">Logout</span>
+                  </a>
+                </div>
+              </div>
+            </div>
           @endauth
         </div>
       </div>
