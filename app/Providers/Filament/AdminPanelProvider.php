@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\LoginPage;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -16,7 +17,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
-use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Vite;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class AdminPanelProvider extends PanelProvider
@@ -27,7 +28,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
+            ->login(LoginPage::class)
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -55,6 +56,17 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->renderHook('panels::body.end', fn (): string => Blade::render("@vite('resources/js/app.js')"));
+            ->renderHook(
+                'panels::head.start',
+                fn (): string => Vite::useBuildDirectory('build')
+                    ->withEntryPoints(['resources/js/app.js'])
+                    ->toHtml()
+            )
+            ->renderHook(
+                'panels::head.start',
+                fn (): string => Vite::useBuildDirectory('build')
+                    ->withEntryPoints(['resources/css/app.css'])
+                    ->toHtml()
+            );
     }
 }

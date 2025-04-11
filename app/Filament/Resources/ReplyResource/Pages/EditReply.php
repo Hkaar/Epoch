@@ -14,8 +14,10 @@ class EditReply extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            ViewAction::make(),
-            DeleteAction::make(),
+            ViewAction::make()
+                ->icon('lucide-eye'),
+            DeleteAction::make()
+                ->icon('lucide-trash-2'),
         ];
     }
 }

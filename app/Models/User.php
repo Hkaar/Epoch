@@ -6,6 +6,7 @@ namespace App\Models;
 use App\Enum\RoleEnum;
 use Filament\Actions\Concerns\HasName;
 use Filament\Models\Contracts\FilamentUser;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -14,7 +15,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements FilamentUser
 {
-    use HasApiTokens, HasFactory, HasName, Notifiable;
+    use HasApiTokens, HasFactory, HasName, HasUuids, Notifiable;
 
     /**
      * The table associated with the model.
@@ -181,5 +182,10 @@ class User extends Authenticatable implements FilamentUser
         }, $roles);
 
         return in_array($this->role_id, $roles);
+    }
+
+    public function getAuthPasswordName(): string
+    {
+        return 'password';
     }
 }

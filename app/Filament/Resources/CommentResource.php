@@ -7,10 +7,15 @@ use App\Filament\Resources\CommentResource\Pages\EditComment;
 use App\Filament\Resources\CommentResource\Pages\ListComments;
 use App\Filament\Resources\CommentResource\Pages\ViewComment;
 use App\Models\Comment;
+use App\Models\Post;
+use App\Models\User;
+use Filament\Forms\Components\Grid as FormGrid;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Section as FormSection;
+use Filament\Forms\Components\Select as FormSelect;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\BulkActionGroup;
-use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
@@ -21,14 +26,43 @@ class CommentResource extends Resource
 {
     protected static ?string $model = Comment::class;
 
-    protected static ?string $navigationGroup = 'Content Management';
-    protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-right';
+    protected static ?string $navigationLabel = 'Comments';
+
+    protected static ?string $modelLabel = 'Comments';
+
+    protected static ?string $recordTitleAttribute = 'content';
+
+    protected static ?string $navigationGroup = 'Content';
+    // protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-right';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                FormSection::make('Comment Details')
+                    ->icon('lucide-info')
+                    ->schema([
+                        FormGrid::make()
+                            ->schema([
+                                FormSelect::make('user_id')
+                                    ->options(User::pluck('username', 'id'))
+                                    ->label('User')
+                                    ->placeholder('Select a user')
+                                    ->searchable()
+                                    ->required(),
+
+                                FormSelect::make('post_id')
+                                    ->options(Post::pluck('content', 'id'))
+                                    ->label('Post')
+                                    ->placeholder('Select a post')
+                                    ->searchable()
+                                    ->required(),
+
+                                RichEditor::make('content')
+                                    ->columnSpanFull()
+                                    ->required(),
+                            ]),
+                    ]),
             ]);
     }
 
@@ -45,6 +79,7 @@ class CommentResource extends Resource
                     ->searchable(),
                 TextColumn::make('content')
                     ->label('Content')
+                    ->markdown()
                     ->searchable()
                     ->lineClamp(2),
             ])
@@ -54,13 +89,14 @@ class CommentResource extends Resource
             ->actions([
                 ViewAction::make(),
                 EditAction::make(),
-                DeleteAction::make(),
             ])
             ->bulkActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->emptyStateIcon('heroicon-o-chat-bubble-bottom-center-text')
+            ->emptyStateDescription('Create a new comment to get started!');
     }
 
     public static function getRelations(): array
