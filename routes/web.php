@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Social\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,8 @@ Route::view('careers', 'company.careers')->name('careers');
 
 Route::view('terms-of-service', 'company.tos')->name('tos');
 Route::view('privacy-policy', 'company.privacy-policy')->name('privacy-policy');
+
+Route::get('profile/{username}', [ProfileController::class, 'profile'])->name('social.profile');
 
 Route::middleware('guest')->group(function () {
     Route::get('login', [LoginController::class, 'show'])->name('login');
