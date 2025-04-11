@@ -8,14 +8,15 @@ A simple social media web app using laravel
 
 ## Requirements
 
-- PHP >= 8.1
+- PHP >= 8.3
 - Composer
 - Node.js
 
-## So what's it for?
+## Features
 
-This project is just a simple example of a social media web app
-using laravel and that's pretty much it.
+- Has posts, comments, profiles, followers and more
+- Includes explicit preferences (or settings) for privacy
+- Modern design following UI/UX guidelines
 
 ## Then, how do i run it on my computer?
 
@@ -88,13 +89,3 @@ And then serve it!
 ```bash
 php artisan serve
 ```
-
-## So, how do i help?
-
-You can help the project by contributing to it or by just using the app :)
-
-See on how to contribute by going to the [contribution guide](https://github.com/Hkaar/7Books/blob/master/CONTRIBUTING.md) of the project
-
-And that's all, btw here's a table for your reward
-
-ʕノ•ᴥ•ʔノ ︵ ┻━┻
