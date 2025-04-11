@@ -39,8 +39,7 @@
           <div class="grow">
             <div class="flex flex-col gap-0.5 md:flex-row md:items-center md:justify-end md:gap-1">
               <a class="{{ $path === '' ? 'bg-gray-100 text-gray-700' : 'text-gray-800 hover:bg-gray-100' }} focus:outline-hidden flex items-center gap-x-1.5 rounded-lg p-2 text-sm focus:bg-gray-100 dark:bg-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
-                @auth href="{{ $path === '' ? '#' : route('home') }}" @endauth
-                @guest href="{{ $path === '' ? '#' : route('/') }}" @endguest aria-current="page">
+                href="{{ auth()->check() ? route('/') : route('home') }}" aria-current="page">
                 <i data-lucide="home" class="size-4"></i>
                 Home
               </a>

@@ -10,11 +10,11 @@ class ProfileController extends Controller
 {
     /**
      * Shows the public profile of a user
-     * 
-     * @param \Illuminate\Http\Request $request
-     * @param string $username
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
-    public function profile(Request $request, string $username) {
+    public function profile(Request $request, string $username)
+    {
         $user = User::where('username', $username)->first();
 
         return view('social.profile', [

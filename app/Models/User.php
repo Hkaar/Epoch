@@ -184,7 +184,8 @@ class User extends Authenticatable implements FilamentUser
         return in_array($this->role_id, $roles);
     }
 
-    public function getAuthPasswordName(): string {
+    public function getAuthPasswordName(): string
+    {
         return 'password';
     }
 }

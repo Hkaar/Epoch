@@ -12,7 +12,7 @@ class Footer extends Component
      * Create a new component instance.
      */
     public function __construct(
-        protected ?string $path = ""
+        protected ?string $path = ''
     ) {}
 
     /**
