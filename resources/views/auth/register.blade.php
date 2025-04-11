@@ -21,6 +21,10 @@
           <input type="text" id="username-label" name="username"
             class="block w-full rounded-lg border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 sm:py-3 sm:text-sm"
             placeholder="Enter a username">
+
+          @error('username')
+            <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+          @enderror
         </div>
 
         <div class="max-w-lg">
@@ -28,6 +32,10 @@
           <input type="email" id="email-label" name="email"
             class="block w-full rounded-lg border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 sm:py-3 sm:text-sm"
             placeholder="Enter a valid email">
+
+          @error('email')
+            <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+          @enderror
         </div>
 
         <div class="max-w-lg">
@@ -94,7 +102,7 @@
         </p>
 
         <div class="mt-3.5 flex items-center gap-x-2.5">
-          <x-button class="gap-x-2.5 bg-primary text-white">
+          <x-button type="submit" class="gap-x-2.5 bg-primary text-white">
             Register
 
             <i data-lucide="log-in" class="size-5"></i>
