@@ -1,6 +1,6 @@
 import 'preline';
 
-import { createIcons, Trash } from 'lucide';
+import { createIcons } from 'lucide';
 import {
     MessageCircle,
     Home,
