@@ -94,7 +94,9 @@ class ReplyResource extends Resource
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->emptyStateIcon('heroicon-o-chat-bubble-left-right')
+            ->emptyStateDescription('Create a new Reply to get started!');
     }
 
     public static function getRelations(): array

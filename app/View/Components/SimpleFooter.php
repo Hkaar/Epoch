@@ -6,13 +6,13 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class DashboardLayout extends Component
+class SimpleFooter extends Component
 {
     /**
      * Create a new component instance.
      */
     public function __construct(
-        public string $active,
+        protected ?string $path = ''
     ) {}
 
     /**
@@ -20,8 +20,8 @@ class DashboardLayout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.dashboard-layout', [
-            'active' => $this->active,
+        return view('components.simple-footer', [
+            'path' => $this->path,
         ]);
     }
 }

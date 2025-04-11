@@ -6,13 +6,13 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class DashboardSideNavigation extends Component
+class SettingsLayout extends Component
 {
     /**
      * Create a new component instance.
      */
     public function __construct(
-        public string $active,
+        protected ?string $path = '',
     ) {}
 
     /**
@@ -20,8 +20,8 @@ class DashboardSideNavigation extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.dashboard-side-navigation', [
-            'active' => $this->active,
+        return view('components.settings-layout', [
+            'path' => $this->path,
         ]);
     }
 }

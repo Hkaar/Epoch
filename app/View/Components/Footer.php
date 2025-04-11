@@ -6,13 +6,13 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class PaginateLinks extends Component
+class Footer extends Component
 {
     /**
      * Create a new component instance.
      */
     public function __construct(
-        public mixed $links,
+        protected ?string $path = ''
     ) {}
 
     /**
@@ -20,8 +20,8 @@ class PaginateLinks extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.paginate-links', [
-            'links' => $this->links,
+        return view('components.footer', [
+            'path' => $this->path,
         ]);
     }
 }

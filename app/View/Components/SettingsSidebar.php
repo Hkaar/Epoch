@@ -6,18 +6,22 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class DashboardNavigationBar extends Component
+class SettingsSidebar extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct() {}
+    public function __construct(
+        protected ?string $path = '',
+    ) {}
 
     /**
      * Get the view / contents that represent the component.
      */
     public function render(): View|Closure|string
     {
-        return view('components.dashboard-navigation-bar');
+        return view('components.settings-sidebar', [
+            'path' => $this->path,
+        ]);
     }
 }

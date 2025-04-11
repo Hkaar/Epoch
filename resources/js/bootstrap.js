@@ -1,5 +1,78 @@
 import 'preline';
-import 'material-symbols';
+
+import { createIcons, Trash } from 'lucide';
+import {
+    MessageCircle,
+    Home,
+    Info,
+    BriefcaseBusiness,
+    Rocket,
+    Box,
+    ArrowUpRight,
+    Lock,
+    LayoutGrid,
+    Carrot,
+    Zap,
+    Earth,
+    CircleHelp,
+    Phone,
+    Mail,
+    Send,
+    LogIn,
+    LogOut,
+    User,
+    Settings,
+    Brush,
+    Shield,
+    Layers,
+    ArrowLeft,
+    Save,
+    Download,
+    RotateCcw,
+    Trash2,
+    Monitor,
+    Sun,
+    Moon,
+} from 'lucide';
+
+createIcons({ 
+    attrs: {
+        'stroke-width': 1.5,
+    },
+    icons: {
+        MessageCircle,
+        Home,
+        Info,
+        BriefcaseBusiness,
+        Rocket,
+        Box,
+        ArrowUpRight,
+        Lock,
+        LayoutGrid,
+        Carrot,
+        Zap,
+        Earth,
+        CircleHelp,
+        Phone,
+        Mail,
+        Send,
+        LogIn,
+        LogOut,
+        User,
+        Settings,
+        Brush,
+        Shield,
+        Layers,
+        ArrowLeft,
+        Save,
+        Download,
+        RotateCcw,
+        Trash2,
+        Monitor,
+        Moon,
+        Sun,
+    }
+});
 
 import.meta.glob([
     "../images/**/*",
@@ -12,8 +85,10 @@ import.meta.glob([
  */
 
 import axios from 'axios';
+// @ts-ignore
 window.axios = axios;
 
+// @ts-ignore
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**

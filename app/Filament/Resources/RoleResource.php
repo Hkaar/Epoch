@@ -55,7 +55,9 @@ class RoleResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->emptyStateIcon('heroicon-o-key')
+            ->emptyStateDescription('Create a new Role to get started!');
     }
 
     public static function getRelations(): array

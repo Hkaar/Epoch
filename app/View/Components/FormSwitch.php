@@ -6,13 +6,15 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class PaginateCounter extends Component
+class FormSwitch extends Component
 {
     /**
      * Create a new component instance.
      */
     public function __construct(
-        public mixed $items,
+        protected string $name,
+        protected ?string $label = null,
+        protected ?string $hint = null,
     ) {}
 
     /**
@@ -20,8 +22,10 @@ class PaginateCounter extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.paginate-counter', [
-            'items' => $this->items,
+        return view('components.form-switch', [
+            'name' => $this->name,
+            'label' => $this->label,
+            'hint' => $this->hint,
         ]);
     }
 }
