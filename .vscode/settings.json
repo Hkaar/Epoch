@@ -8,5 +8,9 @@
         "**/.hg/store/**": true,
         "**/node_modules/**": true,
         "**/vendor/**": true
+    },
+    "[blade]": {
+        "editor.defaultFormatter": "shufo.vscode-blade-formatter",
+        "editor.formatOnSave": true
     }
 }
