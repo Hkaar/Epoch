@@ -46,7 +46,7 @@ class MakeUser extends Command
             'username' => $this->argument('username'),
             'email' => $this->argument('email'),
         ], [
-            'username' => 'unique:users,username',
+            'username' => 'unique:users,username|regex:/^[a-zA-Z0-9_-]+$/',
             'email' => 'unique:users,email',
         ]);
 
