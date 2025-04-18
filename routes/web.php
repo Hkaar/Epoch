@@ -17,7 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome')->name('/');
+Route::get('/', function () {
+    if (auth()->check()) {
+        return redirect('home');
+    }
+
+    return view('welcome');
+})->name('/');
 
 Route::view('about', 'company.about')->name('about');
 Route::view('careers', 'company.careers')->name('careers');
@@ -37,6 +43,10 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::view('home', 'home')->name('home');
+
+    Route::view('for-you', 'for-you')->name('for-you');
+    Route::view('discover', 'discover')->name('discover');
+    Route::view('trending', 'trending')->name('trending');
 
     Route::view('settings/public-profile', 'auth.settings.public-profile')->name('settings.public-profile');
     Route::view('settings/account', 'auth.settings.account')->name('settings.account');
