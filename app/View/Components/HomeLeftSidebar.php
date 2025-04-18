@@ -13,8 +13,7 @@ class HomeLeftSidebar extends Component
      */
     public function __construct(
         protected ?string $path = ''
-    ) {
-    }
+    ) {}
 
     /**
      * Get the view / contents that represent the component.

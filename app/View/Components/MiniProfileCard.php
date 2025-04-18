@@ -16,8 +16,7 @@ class MiniProfileCard extends Component
         protected ?string $name = '',
         protected ?string $username = '',
         protected ?string $src = '',
-    ) {
-    }
+    ) {}
 
     /**
      * Get the view / contents that represent the component.
