@@ -8,19 +8,19 @@
       @csrf
 
       <section id="main" class="flex flex-col gap-3.5">
-        <span class="w-full border-b border-gray-200 pb-2.5 text-2xl font-semibold">
+        <span class="mb-0.5 w-full text-2xl font-semibold">
           Privacy Controls
         </span>
 
         <x-card>
           <span class="mb-0.5 block text-lg font-medium dark:text-white">Visibility</span>
-          <span class="mb-3.5 block text-sm text-gray-400 dark:text-neutral-500">
+
+          <span class="mb-4 block text-sm text-gray-400 dark:text-neutral-500">
             Control the visibility of your account
           </span>
 
-          <div class="flex flex-col gap-2.5">
-            <x-form-switch name="username-visibility" label="Visible username"
-              hint="Controls whether your username can be seen publicly or not" />
+          <div class="flex flex-col gap-3.5">
+            <x-form-switch name="username-visibility" label="Visible username" hint="Controls whether your username can be seen publicly or not" />
 
             <x-form-switch name="account-visibility" label="Private Account"
               hint="Control whether public users can see your posts or only your friends can see them." />
@@ -40,16 +40,13 @@
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
                   <thead>
                     <tr>
-                      <th scope="col"
-                        class="px-6 py-3 text-start text-xs font-medium uppercase text-gray-500 dark:text-neutral-500">
+                      <th scope="col" class="px-6 py-3 text-start text-xs font-medium uppercase text-gray-500 dark:text-neutral-500">
                         Type of data
                       </th>
-                      <th scope="col"
-                        class="px-6 py-3 text-start text-xs font-medium uppercase text-gray-500 dark:text-neutral-500">
+                      <th scope="col" class="px-6 py-3 text-start text-xs font-medium uppercase text-gray-500 dark:text-neutral-500">
                         Description
                       </th>
-                      <th scope="col"
-                        class="px-6 py-3 text-start text-xs font-medium uppercase text-gray-500 dark:text-neutral-500">
+                      <th scope="col" class="px-6 py-3 text-start text-xs font-medium uppercase text-gray-500 dark:text-neutral-500">
                         Status
                       </th>
                     </tr>
