@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', 'Trending')
 
 @section('content')
-  <x-home-layout class="min-h-screen">
+  <x-home-layout path="trending" class="min-h-screen">
     <x-post-card></x-post-card>
     <x-post-card></x-post-card>
     <x-post-card></x-post-card>

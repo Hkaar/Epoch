@@ -8,7 +8,7 @@
       @csrf
 
       <section id="main" class="flex flex-col gap-3.5">
-        <span class="w-full border-b border-gray-200 pb-2.5 text-2xl font-semibold">
+        <span class="mb-0.5 w-full text-2xl font-semibold">
           Appearance
         </span>
 

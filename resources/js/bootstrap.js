@@ -33,6 +33,13 @@ import {
     Monitor,
     Sun,
     Moon,
+    Search,
+    Globe2,
+    Flame,
+    ThumbsUp,
+    ThumbsDown,
+    Share2,
+    Repeat,
 } from 'lucide';
 
 createIcons({ 
@@ -71,6 +78,13 @@ createIcons({
         Monitor,
         Moon,
         Sun,
+        Search,
+        Globe2,
+        Flame,
+        ThumbsUp,
+        ThumbsDown,
+        Share2,
+        Repeat
     }
 });
 
