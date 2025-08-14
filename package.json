@@ -25,6 +25,6 @@
     "dependencies": {
         "lucide": "^0.485.0",
         "preline": "^2.4.1",
-        "sweetalert2": "^11.6.13"
+        "sweetalert2": "^11.22.4"
     }
 }
